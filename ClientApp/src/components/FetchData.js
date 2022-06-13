@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import fetchInject from '../utils/fetchInject';
 
 export class FetchData extends Component {
     static displayName = FetchData.name;
@@ -28,7 +29,7 @@ export class FetchData extends Component {
 
     static renderCookiesTable(cookies) {
         return (
-            <table className='table table-striped' aria-labelledby="tabelLabel">
+            <table className='table table-striped' aria-labelledby="tabelLabel" id="test1">
                 <thead>
                     <tr>
                         <th>Index</th>
@@ -61,11 +62,13 @@ export class FetchData extends Component {
                 <p>This component demonstrates fetching data from the server.</p>
                 {contents}
             </div>
-
         );
     }
 
     async populateData() {
+        fetchInject([
+            '/scripts/fetchInject',
+        ])
         const response = await fetch('cookies');
         const data = await response.json();
         this.setState({ cookies: data, loading: false });

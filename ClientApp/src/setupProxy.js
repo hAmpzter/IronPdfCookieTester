@@ -8,6 +8,7 @@ const context =  [
     "/cookies",
     "/print/setCookie",
     "/print",
+    "/scripts/fetchInject",
 ];
 
 module.exports = function(app) {
